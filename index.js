@@ -1,6 +1,6 @@
 import Rubify from './src/rubify/js/index.js';
 
-let chrStr = '天(てん)童(どう)ア()リ()ス()';
+let chrStr = '天童爱丽丝';
 let rr = new Rubify().complexConv(chrStr);
 
 function genHex() {
