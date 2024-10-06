@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>学生信息卡</title>
+    <title>文档</title>
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/right.css">
     <link rel="stylesheet" href="./css/signature.css">
@@ -30,10 +30,10 @@
         <img class="shicon show" src="./icons/shaleIcon.png">
         <div class="info">
             <img class="logo show" src="./logos/Millennium.png">
-            <span class="shName top">千年科学学园</span>
+            <span class="shName top">ミレニアムサイエンススクール</span>
             <span class="shName bott">千年科学学园</span>
             <div class="mid">
-                <img src="./Aris.png" id="profile-img">
+                <img src="./Aris.png">
                 <div class="cont">
                     <div>
                         <span>学号</span>
@@ -49,87 +49,20 @@
                     </div>
                     <div>
                         <span>姓名</span>
-                        <ruby id="name-ruby"></ruby>
+                        <ruby></ruby>
                     </div>
                 </div>
             </div>
             <div class="bottom">
-                <span class="text">特此证明，上述学生为本校学生。<br>
-                    千年科学学园 校长</span>
+                <span class="text">上記の生徒は本校の学生であることを証明する。
+                    千年科学学园 校长
+                </span>
                 <div class="hanko">
                     <span class="i"></span>
-                    <span class="t">千年科学学园<br>
-                        校长</span>
+                    <span class="t">ミレニアム<br>
+                        科学学校<br>
+                        校生長</span>
                 </div>
             </div>
         </div>
-        <div class="cover">
-            <a href="#modal-options" class="button call-modal"><button>编辑信息</button></a>
-        </div>
-    </div>
-    <section class="modal--show editForm" id="modal-options" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
-        <div class="modal-inner">
-            <header>
-                <h2 id="modal-label">编辑选项</h2>
-                <a href="#" class="modal-close" title="关闭窗口" data-dismiss="modal" data-close="关闭">x</a>
-            </header>
-
-            <form id="edit" enctype="multipart/form-data">
-                <div class="modal-content">
-                    <div>
-                        <label>自定义？</label>
-                        <input type="checkbox" name="custom">
-                    </div>
-                    <div>
-                        <label>地点</label>
-                        <div class="loc">
-                            <select name="loc" id="loc">
-                                <option value="Abydos">阿拜多斯高中</option>
-                                <option value="Gehenna">格黑娜学园</option>
-                                <option value="Millennium" selected>千年科学学园</option>
-                                <option value="Trinity">三一综合学园</option>
-                                <option value="Haykkiyako">百鬼夜行联合学园</option>
-                                <option value="Shanhaijin">山海经高级中学</option>
-                                <option value="RedWinterUni">赤冬联邦学园</option>
-                                <option value="Valkyrie">女武神警察学园</option>
-                                <option value="SRT">SRT特殊学园</option>
-                                <option value="Arius">阿里乌斯分校</option>
-                                <option value="Schale">夏莱</option>
-                                <option value="Extra">其他</option>
-                            </select>
-                            <img class="locSel" src="./logos/Millennium.png">
-                        </div>
-                    </div>
-                    <div>
-                        <label>学号</label>
-                        <input type="text" name="id" placeholder="A204E0052"><br>
-                        <label>随机生成</label>
-                        <input type="checkbox" name="idRend">
-                    </div>
-                    <div class="club">
-                        <label>社团</label>
-                        <input type="text" name="club" placeholder="游戏开发部">
-                        <label>社团图标</label>
-                        <input type="file" name="clubIcon">
-                    </div>
-                    <div>
-                        <label>生日</label>
-                        <input type="date" name="btd" value="2000-12-15">
-                    </div>
-                    <div class="name">
-                        <label>姓名</label>
-                        <input type="text" name="name" placeholder="天(てん)童(どう)ア()リ()ス()">
-                        <label>姓名预览</label><br>
-                        <ruby class="name pre"></ruby>
-                    </div>
-                    <div>
-                        <label>个人图片</label>
-                        <input type="file" name="profileImg">
-                    </div>
-                </div>
-            </form>
-        </div>
-    </section>
-</body>
-
-</html>
+        <div class
