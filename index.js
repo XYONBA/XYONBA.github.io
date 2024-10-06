@@ -1,4 +1,5 @@
 import Rubify from './src/rubify/js/index.js';
+
 let chrStr = '天(てん)童(どう)ア()リ()ス()';
 let rr = new Rubify().complexConv(chrStr);
 
@@ -21,11 +22,46 @@ window.onload = () => {
     elmSelter('.editForm a.modal-close').onclick = () => {
         let d = new FormData(document.querySelector('form#edit'));
         const value = Object.fromEntries(d.entries());
-        apply(value)
+        apply(value);
     }
 }
 
 function apply(j) {
     if (!j.id) j.id = genHex();
-    console.log(j)
+
+    // 更新学号
+    document.querySelector('.cont.r .mid #num').textContent = j.id;
+
+    // 更新社团
+    document.querySelector('.cont.r .mid #club').textContent = j.club;
+
+    // 更新生日
+    document.querySelector('.cont.r .mid div:nth-child(3) span:last-child').textContent = new Date(j.btd).toLocaleDateString('zh-CN', { month: 'long', day: 'numeric' });
+
+    // 更新姓名
+    document.querySelector('.cont.r .mid #name-ruby').innerHTML = new Rubify().complexConv(j.name);
+
+    // 更新地点图片
+    document.querySelector('.cont.r .info .logo.show').src = `./logos/${j.loc == "Extra" ? "Schale" : j.loc}.png`;
+
+    // 更新社团图标
+    if (j.clubIcon) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.querySelector('.cont.r .mid .club_img').src = e.target.result;
+        };
+        reader.readAsDataURL(j.clubIcon);
+    }
+
+    // 更新个人图片
+    if (j.profileImg) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.querySelector('.cont.r .mid #profile-img').src = e.target.result;
+        };
+        reader.readAsDataURL(j.profileImg);
+    }
+
+    // 调试信息
+    console.log('Updated values:', j);
 }
