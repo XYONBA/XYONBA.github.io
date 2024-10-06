@@ -19,7 +19,8 @@ window.onload = () => {
     elmSelter('form#edit input[type="text"][name="name"]').onchange = v => {
         document.querySelector('form#edit ruby.name.pre').innerHTML = new Rubify().complexConv(v.target.value);
     }
-    elmSelter('.editForm a.modal-close').onclick = () => {
+    elmSelter('.editForm a.modal-close').onclick = (e) => {
+        e.preventDefault(); // 阻止默认行为
         let d = new FormData(document.querySelector('form#edit'));
         const value = Object.fromEntries(d.entries());
         apply(value);
@@ -61,6 +62,10 @@ function apply(j) {
         };
         reader.readAsDataURL(j.profileImg);
     }
+
+    // 关闭模态框
+    document.querySelector('.editForm').setAttribute('aria-hidden', 'true');
+    document.querySelector('.editForm').classList.remove('modal--show');
 
     // 调试信息
     console.log('Updated values:', j);
