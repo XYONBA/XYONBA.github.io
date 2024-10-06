@@ -1,6 +1,6 @@
 import Rubify from './src/rubify/js/index.js';
 
-let chrStr = '天童爱丽丝';
+let chrStr = '天(てん)童(どう)ア()リ()ス()';
 let rr = new Rubify().complexConv(chrStr);
 
 function genHex() {
@@ -19,32 +19,35 @@ window.onload = () => {
     elmSelter('form#edit input[type="text"][name="name"]').onchange = v => {
         document.querySelector('form#edit ruby.name.pre').innerHTML = new Rubify().complexConv(v.target.value);
     }
+
+    // 模态框关闭按钮的点击事件
     elmSelter('.editForm a.modal-close').onclick = (e) => {
         e.preventDefault(); // 阻止默认行为
         let d = new FormData(document.querySelector('form#edit'));
         const value = Object.fromEntries(d.entries());
         apply(value);
+        document.querySelector('.editForm').setAttribute('aria-hidden', 'true'); // 关闭模态框
     }
 }
 
 function apply(j) {
     if (!j.id) j.id = genHex();
-
+    
     // 更新学号
     document.querySelector('.cont.r .mid #num').textContent = j.id;
-
+    
     // 更新社团
     document.querySelector('.cont.r .mid #club').textContent = j.club;
-
+    
     // 更新生日
     document.querySelector('.cont.r .mid div:nth-child(3) span:last-child').textContent = new Date(j.btd).toLocaleDateString('zh-CN', { month: 'long', day: 'numeric' });
-
+    
     // 更新姓名
     document.querySelector('.cont.r .mid #name-ruby').innerHTML = new Rubify().complexConv(j.name);
-
+    
     // 更新地点图片
     document.querySelector('.cont.r .info .logo.show').src = `./logos/${j.loc == "Extra" ? "Schale" : j.loc}.png`;
-
+    
     // 更新社团图标
     if (j.clubIcon) {
         const reader = new FileReader();
@@ -53,7 +56,7 @@ function apply(j) {
         };
         reader.readAsDataURL(j.clubIcon);
     }
-
+    
     // 更新个人图片
     if (j.profileImg) {
         const reader = new FileReader();
@@ -62,11 +65,4 @@ function apply(j) {
         };
         reader.readAsDataURL(j.profileImg);
     }
-
-    // 关闭模态框
-    document.querySelector('.editForm').setAttribute('aria-hidden', 'true');
-    document.querySelector('.editForm').classList.remove('modal--show');
-
-    // 调试信息
-    console.log('Updated values:', j);
 }
